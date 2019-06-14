@@ -14,7 +14,7 @@ Date:   2018/09/20
 import sys
 
 from quant.quant import quant
-from quant.const import OKEX, OKEX_FUTURE, BINANCE, HUOBI, DERIBIT
+from quant.const import OKEX, OKEX_FUTURE, BINANCE, HUOBI, DERIBIT, BITMEX
 
 
 def initialize():
@@ -23,7 +23,6 @@ def initialize():
     from quant.utils import logger
     from quant.config import config
 
-    # 初始化资产更新
     for platform, info in config.platforms.items():
         for item in info["assets"]:
             if platform == OKEX:
@@ -36,6 +35,8 @@ def initialize():
                 from assets.okex_future import OKExFutureAsset as AssetServer
             elif platform == DERIBIT:
                 from assets.deribit import DeribitAsset as AssetServer
+            elif platform == BITMEX:
+                from assets.bitmex import BitmexAsset as AssetServer
             else:
                 logger.error("platform error! platform:", platform)
                 continue
