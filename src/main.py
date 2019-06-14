@@ -14,7 +14,7 @@ Date:   2018/09/20
 import sys
 
 from quant.quant import quant
-from quant.const import OKEX, OKEX_FUTURE, BINANCE, HUOBI
+from quant.const import OKEX, OKEX_FUTURE, BINANCE, HUOBI, DERIBIT
 
 
 def initialize():
@@ -34,6 +34,8 @@ def initialize():
                 from assets.huobi import HuobiAsset as AssetServer
             elif platform == OKEX_FUTURE:
                 from assets.okex_future import OKExFutureAsset as AssetServer
+            elif platform == DERIBIT:
+                from assets.deribit import DeribitAsset as AssetServer
             else:
                 logger.error("platform error! platform:", platform)
                 continue
