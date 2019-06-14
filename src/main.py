@@ -14,7 +14,7 @@ Date:   2018/09/20
 import sys
 
 from quant.quant import quant
-from quant.const import OKEX, BINANCE
+from quant.const import OKEX, BINANCE, HUOBI
 
 
 def initialize():
@@ -23,7 +23,6 @@ def initialize():
     from quant.utils import logger
     from quant.config import config
 
-
     # 初始化资产更新
     for platform, info in config.platforms.items():
         for item in info["assets"]:
@@ -31,6 +30,8 @@ def initialize():
                 from assets.okex import OKExAsset as AssetServer
             elif platform == BINANCE:
                 from assets.binance import BinanceAsset as AssetServer
+            elif platform == HUOBI:
+                from assets.huobi import HuobiAsset as AssetServer
             else:
                 logger.error("platform error! platform:", platform)
                 continue
