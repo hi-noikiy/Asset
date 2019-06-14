@@ -14,8 +14,8 @@ pip install thenextquant
 
 - 下载项目 & 修改配置文件
 ```text
-git clone https://github.com/TheNextQuant/Market.git  # 下载项目
-cd Market  # 进入项目目录
+git clone https://github.com/TheNextQuant/Asset.git  # 下载项目
+cd Asset  # 进入项目目录
 vim config.json  # 编辑配置文件
 ```
 > 可以参考[配置示例](config.json)，配置文件详解请参考 [配置文件说明](https://github.com/TheNextQuant/thenextquant/blob/master/docs/configure/README.md)。
