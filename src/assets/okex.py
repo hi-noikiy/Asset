@@ -63,11 +63,15 @@ class OKExAsset:
         assets = {}
         for item in result:
             symbol = item["currency"]
-            total = item["balance"]
-            free = item["available"]
-            locked = item["frozen"]
-            if float(total) > 0:
-                assets[symbol] = {"total": total, "free": free, "locked": locked}
+            total = float(item["balance"])
+            free = float(item["available"])
+            locked = float(item["frozen"])
+            if total > 0:
+                assets[symbol] = {
+                    "total": "%.8f" % total,
+                    "free": "%.8f" % free,
+                    "locked": "%.8f" % locked
+                }
 
         if assets == self._assets:
             update = False
