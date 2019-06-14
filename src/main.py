@@ -14,6 +14,7 @@ Date:   2018/09/20
 import sys
 
 from quant.quant import quant
+from quant.const import OKEX, BINANCE
 
 
 def initialize():
@@ -21,17 +22,19 @@ def initialize():
     """
     from quant.utils import logger
     from quant.config import config
-    from quant.const import OKEX
+
 
     # 初始化资产更新
     for platform, info in config.platforms.items():
         for item in info["assets"]:
             if platform == OKEX:
-                from assets.okex import OKExAsset
-                OKExAsset(**item)
+                from assets.okex import OKExAsset as AssetServer
+            elif platform == BINANCE:
+                from assets.binance import BinanceAsset as AssetServer
             else:
                 logger.error("platform error! platform:", platform)
                 continue
+            AssetServer(**item)
 
 
 def main():
